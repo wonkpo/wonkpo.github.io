@@ -1,5 +1,5 @@
 #!/bin/bash
 
 git add --all
-git commit -m "2 commit"
+git commit -m "Initial commit"
 git push -u origin main
