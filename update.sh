@@ -1,5 +1,5 @@
 #!/bin/bash
 
 git add --all
-git commit -m "Fix post display errors (2)"
+git commit -m "Testing"
 git push -u origin main
