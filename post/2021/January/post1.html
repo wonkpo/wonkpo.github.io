@@ -1,0 +1,813 @@
+<html>
+<head>
+<style type="text/css">
+body, html {
+  height: 100%;
+  widht: 100%;
+  scroll-padding-top: var(--top-spacing);
+  margin: var(--top-spacing) auto;
+  padding: 0px;
+  font-family: Roboto, sans-serif;
+}
+
+hr {
+	background-color: rgba(0,0,0,0.12);
+	border: none;
+	height: 1px;
+	margin: 0;
+}
+img {
+	height: auto;
+	width: 100%;
+}
+textarea {
+	background: transparent;
+	border: 0;
+	font-family: Roboto, Arial, sans-serif;
+	margin: 0;
+	outline: none;
+	padding: 0;
+	position: relative;
+	resize: none;
+	top: 11px;
+	word-wrap: break-word;
+}
+[class^='col-'] {
+	float: left;
+	padding: 0 0.5%;
+	margin-bottom: 30;
+}
+h1 {
+	font-size: 96px;
+	font-weight: 300;
+	letter-spacing: -1.5px;
+}
+h2 {
+	font-size: 60px;
+	color: #eeeeee;
+	font-weight: 300;
+	letter-spacing: -0.5px;
+}
+h3 {
+	font-size: 48px;
+	font-weight: 400;
+	letter-spacing: 0;
+}
+h4 {
+	font-size: 34px;
+	font-weight: 400;
+	letter-spacing: 0.25px;
+}
+h5 {
+	font-size: 24px;
+	font-weight: 400;
+	letter-spacing: 0;
+}
+h6 {
+	font-size: 20px;
+	font-weight: 500;
+	letter-spacing: 0.15px;
+}
+.subtitle-01 {
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0.15px;
+}
+.subtitle-02 {
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 0.1px;
+}
+.body-01 {
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+}
+.body-02 {
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 0.25px;
+}
+.caption {
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: 0.4px;
+}
+.overline {
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+}
+.button {
+	background-color: transparent;
+	border: none;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	color: inherit;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Roboto, sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 0.75px;
+	line-height: 36px;
+	min-width: 64px;
+	padding: 0 8px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.button, .action-icon {
+	-webkit-transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1);
+	transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1);
+}
+.button--raised {
+	-moz-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+	-webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+	-o-transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+	-webkit-transition: 0 .28s cubic-bezier(.4, 0, .2, 1);
+	transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1), 0 .28s cubic-bezier(.4, 0, .2, 1);
+}
+.button--raised:focus, .button--raised:hover {
+	-moz-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+	-webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+	box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+.button--purple {
+	background-color: #6200EE;
+	color: #fff;
+}
+.button:hover, .action-icon:hover {
+	background-color: rgba(158,158,158,0.2);
+}
+.button:active, .action-icon:active {
+	background-color: rgba(158,158,158,0.4);
+}
+.button:focus:not(:active), .action-icon:focus:not(:active) {
+	background-color: rgba(0,0,0,.12);
+}
+.button[disabled] {
+	color: rgba(0,0,0,.26);
+	cursor: default;
+}
+.button[disabled]:hover {
+	background: none;
+}
+.action-buttons, .action-icons {
+	display: inline-block;
+	vertical-align: middle;
+}
+.action-icon {
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 0 2px;
+	outline: none;
+	padding: 6px;
+}
+.action-icons {
+	color: rgba(0,0,0,0.54);
+}
+.actions {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	min-height: 52px;
+	padding: 8px;
+	position: relative;
+	z-index: 1;
+}
+.divider {
+	display: block;
+	height: 24px;
+}
+.card {
+	background-color: #fff;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 25px;
+	-moz-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+	-webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+	color: rgba(0,0,0,.87);
+	margin-left: 10%;
+	margin-right: 10%;
+	min-width: 290px;
+	overflow: hidden;
+	position: relative;
+}
+.card::after {
+	clear: both;
+}
+.card::after, .card::before {
+	content: "";
+	display: block;
+}
+.card__dark .action-icons {
+	color: rgba(255,255,255,1);
+}
+.card__dark .border-top, .border-top {
+	border-top: 1px solid rgba(0,0,0,0.12);
+}
+.card__dark .secondary-text, .card__dark .subhead, .media .optional-header .subhead {
+	color: rgba(255,255,255,.7);
+}
+.card__dark, .media .primary-text, .media .secondary-text {
+	color: #fff;
+}
+.card__dark--anthracite {
+	background-color: rgba(41,49,51,1);
+}
+.card__dark--magenta {
+	background-color: rgba(73, 64, 101,1);
+}
+.card__small {
+	height: 146px;
+}
+.card__small .media {
+	float: left;
+	height: 100%;
+	overflow: hidden;
+	width: 88px;
+}
+.card__small .media img {
+	height: 100%;
+	left: 50%;
+	position: absolute;
+	-moz-transform: translate(-50%, 0);
+	-ms-transform: translate(-50%, 0);
+	-o-transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	width: auto;
+}
+.card__small .media__right {
+	float: right;
+	height: 100%;
+	overflow: hidden;
+	width: 88px;
+}
+.card__small .media__right ~ .optional-header, .card__small .media__right ~ .primary-title, .card__small .media__right ~ .supporting-text, .card__small .media__right ~ .actions {
+	margin-left: 0;
+	margin-right: 88px;
+}
+.card__small .optional-header, .card__small .primary-title, .card__small .supporting-text, .card__small .actions {
+	margin-left: 88px;
+}
+.card__small .primary-text, .card__small .secondary-text {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.content {
+	margin: 0 auto;
+	max-width: 1440px;
+}
+.float-left {
+	float: left!important;
+}
+.float-right {
+	float: right!important;
+}
+.icon-color--yellow {
+	color: #ffd12a;
+}
+.media {
+	position: relative;
+}
+.media .action-icon {
+	color: #fff;
+	text-shadow: 0 2px 2px rgba(0,0,0,0.54);
+}
+.media .actions {
+	background-image: linear-gradient(rgba(0,0,0,.38), rgba(0,0,0,0));
+	color: #fff;
+	position: absolute;
+	width: 100%;
+}
+.media .optional-header {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #fff;
+	display: block;
+	float: left;
+	width: 100%;
+	z-index: 100;
+}
+.media .optional-header .primary-title {
+	background-image: none;
+	width: auto;
+}
+.media .primary-title {
+	background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.46));
+	bottom: 0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 16px 16px 24px;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+}
+[class*='media--'] {
+	height: 0;
+	overflow: hidden;
+}
+.media--1-1 {
+	padding-bottom: 100%;
+}
+.media--16-9 {
+	padding-bottom: 56.25%;
+}
+.media--16-9 > img, .media--3-2 > img, .media--4-3 > img {
+	height: auto;
+	left: 50%;
+	top: 50%;
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 100%;
+}
+.media--16-9 img, .media--3-2 img, .media--4-3 img, .media--80x80 img, .media--1-1 img, .media--3-4 img, .media--2-3 img {
+	position: absolute;
+}
+.media--2-3 {
+	padding-bottom: 150%;
+}
+.media--3-2 {
+	padding-bottom: 66.66%;
+}
+.media--3-4 {
+	padding-bottom: 133.33%;
+}
+.media--4-3 {
+	padding-bottom: 75%;
+}
+.media--80x80 {
+	margin: 16px;
+	padding-bottom: 80px;
+	width: 80px;
+}
+.media--80x80 > img, .media--1-1 > img, .media--3-4 > img, .media--2-3 > img {
+	height: 100%;
+	left: 50%;
+	-moz-transform: translate(-50%, 0);
+	-ms-transform: translate(-50%, 0);
+	-o-transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	width: auto;
+}
+.optional-header {
+	min-height: 40px;
+	padding: 16px;
+	position: relative;
+}
+.optional-header .action-icons {
+	float: right;
+	position: relative;
+	right: -8px;
+	top: 2px;
+}
+.optional-header .primary-title {
+	bottom: auto;
+	display: inline-block;
+	padding: 0;
+	position: absolute;
+	top: 50%;
+	-moz-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
+.primary-text {
+	font-size: 24px;
+}
+.primary-text + .secondary-text, .secondary-text + .primary-text, .optional-header + .primary-text {
+	margin-top: calc(24px/2/2); /* margin-top is 50% of the primary title font size. */
+}
+.primary-title {
+	padding: 24px 16px 16px;
+}
+.primary-title + .supporting-text, .optional-header + .supporting-text {
+	padding-top: 0;
+}
+.primary-title .optional-header {
+	padding-left: 0;
+	padding-right: 0;
+}
+.secondary-text .action-icon {
+	font-size: inherit;
+	margin: 0;
+	padding: 0;
+}
+.subhead, .secondary-text {
+	color: rgba(0,0,0,.54);
+	font-size: 14px;
+}
+.supporting-text {
+	font-size: 14px;
+	line-height: 1.5;
+	padding: 16px;
+}
+.thumbnail {
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	float: left;
+	height: 40px;
+	position: relative;
+	width: 40px;
+}
+.thumbnail img {
+	background-color: #fff;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	-moz-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
+.thumbnail--24x24 img {
+	height: 24px;
+	width: 24px;
+}
+.thumbnail--28x28 {
+	margin-right: 4px;
+}
+.thumbnail--28x28 img {
+	height: 28px;
+	width: 28px;
+}
+.thumbnail--32x32 {
+	margin-right: 8px;
+}
+.thumbnail--32x32 img {
+	height: 32px;
+	width: 32px;
+}
+.thumbnail--36x36 {
+	margin-right: 12px;
+}
+.thumbnail--36x36 img {
+	height: 36px;
+	width: 36px;
+}
+.thumbnail--40x40 {
+	margin-right: 16px;
+}
+.thumbnail--40x40 img {
+	height: 40px;
+	width: 40px;
+}
+.title {
+	font-size: 14px;
+	font-weight: 500;
+}
+.title + .subhead {
+	margin-top: calc(14px/2/2); /* margin-top is 50% of the title font size. */
+}
+.title, .primary-text {
+	line-height: 1.2;
+}
+
+@media only screen and (min-width: 641px) {
+[class*='col-']::after {
+	clear: both;
+}
+[class*='col-']::after, [class*='col-']::before {
+	clear: both;
+}
+[class*='col-'] {
+	width: 32%;
+}
+}
+
+@media only screen and (min-width: 992px) {
+[class*='col-'] {
+	width: 32%;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+[class*='col-'] {
+	width: 32%;
+}
+}
+
+.header {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #f4f4f4;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+
+a {
+  color: #000;
+}
+
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Langkah Kaki menuju Langit</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+  <a href="" class="logo">Wonkpo</a>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a href="return.html">Home</a></li>
+    <li><a href="return2.html">About author</a></li>
+    <li><a href="return3.html">Post</a></li>
+  </ul>
+</header>
+  <h2>.</h2>
+    <div class="card">
+      <div class="media media--16-9">
+        <div class="actions">
+        </div>
+        <div class="primary-title">
+          <div class="secondary-text">"Dimanakah aku ?" ucapku dengan heran.</div>
+          <div class="primary-text">Langkah Kaki menuju Langit.</div>
+        </div>
+        <img src="https://i.ibb.co/chgzWb0/IMG-20191228-145821.webp" alt="" width="640" height="426"> </div>
+      <div class="optional-header">
+        <div class="thumbnail thumbnail--40x40"><img src="https://i.postimg.cc/4xdtx6F5/IMG-20210104-130839-picsay.jpg" alt="" width="40" height="40"></div>
+        <div class="primary-title">
+          <div class="title">Muflih</div>
+          <div class="subhead">15 Januari 2021</div>
+        </div>
+      </div>
+      <div class="supporting-text"> "Jika belum melihat, pasti kau tak akan tahu kan ?", yah kurang lebih itulah satu ungkapan yang kuingat, namun lupa darimana sumbernya. 3 tahun sudah berlalu sejak "hari itu", namun rasanya masih seperti beberapa bulan yang lalu saja. Sebentar, akan kucoba mengingat-ingat dengan detail bagaimana jalannya "hari itu".
+<br>
+<br>Kisah ini berawal pada saat aku menikmati senja, dan semilir angin di suatu tempat antara Mojokerto dan kota Batu. Situasi di tempat itu ramai dengan kawula muda yang sedang memadu kasih, dan beberapa kelompok orang yang mencoba menikmati suasana. Aku sendiri hanya duduk sambil menatap sebuah bukit yang diselimuti awan. "Seperti apakah keadaan diatas sana ya ?" gumamku dalam hati. Terus kupikirkan bagaimana situasi diatas sana. Mengingat aku benar-benar tidak tahu seperti apa karena aku selama ini hidup di daerah yang panas dan datar, aku pun tak dapat menarik kesimpulan. Singkat cerita, kuputuskan untuk mencoba melakukan survey lokasi di salah satu puncak yang populer untuk ziarah pada malam 1 suro, yaitu puncak hargo dumilah, Cemoro Sewu. Mengapa kuputuskan untuk memilih lokasi tersebut ?, yaitu karena estimasi asal-asalanku memperkirakan bukit yang kulihat itu setinggi +-3km dan itu cocok dengan lokasi tujuanku. Selanjutnya, kuputuskan untuk mempersiapkan keperluan menginap 3 hari. Soal fisik, tak perlu ditanya, karena pada saat itu aku masih giat berlatih setiap hari mengingat masih banyak waktu luang.
+<br>
+<br>
+Setelah semuanya siap, berangkatlah aku ke basecamp cemoro sewu, dan kusempatkan untuk meminum secangkir kopi + beribadah sebelum tancap gas. Tepat sekitar pukul 13:30 WIB, aku bergegas ke pintu masuk untuk meminta izin kepada sang penjaga. Berikut adalah percakapanku dengan sang penjaga seperti yang kuingat :
+<br>
+<br>
+P: Sampean ajenge munggah to mas ?
+<br>
+A: Nggeh pak
+<br>
+P: KTP e pean tilar mriki nggeh
+<br>
+A: Nggeh pak, niki KTP kulo (gw nyerahin KTP)
+<br>
+P: Sampun mbeto SB ?
+<br>
+A: Sampun
+<br>
+<br>
+Setelah percakapan singkat tersebut, kumulai perjalanan dengan doa. Baru beberapa langkah menapak, aku merasa ada sesuatu yang kurang. Lalu ku berhenti sambil celingukan + berpikir "Apa ya yang kurang, hmmm". Saat mataku bergerak kekanan, kulihat ada satu hal menarik.
+<br>
+<br>
+" Wawww, ada tongkat. Mirip punya sun go kong lagi, cocok nih buat pegangan".
+<br>
+<br>
+Setelah itu, kuambil saja tongkat itu dan segera melanjutkan perjalanan.
+<br>
+<br>
+Suasana perjalanan sih benar-benar mirip sebuah lagu yang sering kudengar saat aku masih bocah, "Naik - naik kepuncak gunung, tinggi.. tinggi sekali" yang kuingat dalam liriknya, namun sepertinya kata tinggi nya masih kurang deh kalau 2, jika aku penulisnya, maka pasti akan kutambahkan 5.. tidak, 10 kalau perlu, karena yang kulihat memang berupa batu berundak yang TINGGGIII sekali dengan 2% jalan menurun saja.
+<br>
+<br>
+"Sialll, tau gitu aku gk bakal suka skip² leg days kalau tau bakal kek gini" gumamku dengan pasrah.
+<br>
+<br>
+Karena sudah kepalang capek, kuputuskan mengeluarkan pertalite (sobat misqueen pake pertalite buat masak wkkwwk), tin can stove yang jelek (mana DIY pula -_- ) dan panci kecil wadah makanan yang kubawa untuk masak dan makan - makan sejenak. 
+<br>
+<br>
+<img src="https://i.ibb.co/ctmRLPd/12989071360.webp" width="500" height="600">
+<p style="text-align:center;">Istirahat sejenak dulu</p>
+<br>
+<br>
+Setelah puas makan - makan, kulanjutkan perjalanan. mengingat hari yang sudah mulai sore. Dalam perjalanan hari itu, aku tidak berpapasan dengan seorang pun. Setelah perjalanan naikkk terus menerus tanpa bonus turunan sejak dari pos 2, akhirnya ku sampai di pos 4 yang berada di +- 2900mdpl (di papan penujuknya seingetku seperti itu sih :v). Saat ku menengok kebelakang, aku hanya bisa membayangkan apa yang kulihat ini dengan satu hal.
+<br>
+<br>
+"Oh, apakah ini Skypea ?"
+<br>
+<br>
+<img src="https://i.ibb.co/PMCXxp9/IMG-20180624-170037-result.webp" width="500" height="600">
+<p style="text-align:center;">Indahnyaa, WAWWWW</p>
+<br>
+<br>
+Jika kalian pernah membaca kisah tentang petualangan si manusia karet, kalian pasti akan langsung "ngehh" dengan hal yang mirip dengan apa yang kubayangkan saat itu. Hanya awan yang terlihat sejauh ku memandang kebawah, dengan langit senja yang cerah diatasnya. Aku tak melihat daratan seorangpun selain daratan yang kupijak saat itu. Sebagai orang yang semasa hidupnya selalu berada dibawah awan, aku pun berlama - lama menikmati pemandangan tersebut. Sambil menikmati air minum dan makanan ringan yang tersisa, ibarat lagi melihat mimpi. Semoga saja aku bisa mengajak seseorang yang kusayang untuk menikmati pemandangan ini suatu hari nanti.
+<br>
+<br>
+Hari pun mulai petang, kulanjutkan perjalananku ke target hari pertama yaitu pos 5 yang menurut papan penunjuk memang sudah dekat. Betapa terkejutnya diriku saat menemukan bahwa terdapat rumah makan mini di depan mataku. Tanpa banyak basa basi, aku langsung masuk kedalam, dan didalamnya sudah ada banyak orang. Saat kudengar sedikit perkataan, dan juga seragam mereka, aku langsung menyimpulkan bahwa mereka berasal dari salah satu institut negeri di Jawa Barat. Melihat ada perapian di dapur, sontak aku bereaksi,
+<br>
+<br>
+“YAYYYYYYY” gumamku dalam hati saat itu. Selanjutnya akupun memesan secangkir kopi dan juga meminta ijin untuk menjaga perapian dengan tongkat ku sebagai bahan bakarnya. (Hadehh, bilang aja mau numpang anget” an, wkwk). 
+<br>
+<br>
+Setelah mengucapkan terima kasih kepada si tongkat yang sudah menemani mengapai pos 5 dan menyiapkan api untuk bakar-bakar. Mulailah aku duduk mendekat dan menikmati kehangatan api.
+<br>
+"Oh tongkat, maafkanlah aku yang harus merelakanmu pergi" batinku sedih, dengan lagu My Heart will Go on yang terputar secara otomatis di pikiranku.
+<br>
+<br>
+Malam pun semakin larut, dan aku masih menghangatkan diriku di perapian, bukan suatu alasan, karena…..
+<br>
+<br>
+TOMLOLNYA GW YG LUPA BAWA SB, PADAHAL DAH DIINGETIN (T_T)
+<br>
+<br>
+Okey, kita lanjut lagi.
+<br>
+<br>
+Dalam malam yang semakin gelap itu, tiba - tiba masuklah dua orang dari rombongan yang kujumpai tadi. Dengan santainya mereka berkata :
+<br>
+<br>
+“Mas, beli teh hangat 1 mas”. 
+<br>
+<br>
+“Sial, dikira aku pemilik warung ini hehh. Hadehh” gumamku dalam hati saat itu.
+<br>
+<br>
+Karena sebagai manusia yang baik, kita harus saling menolong satu sama lain, akhirnya ku panaskan air, dan kubuatkan teh hangat untuk mereka. Tak lupa dengan menyelipkan kedalam meja uang yang kudapat dari 2 orang itu ( FYI, sang pemilik tempat memang tidur tepat dibawah meja ). Puas menikmati panasnya api, kulanjutkan saat itu dengan tidur. Namun ditengah waktu istirahatku, hal buruk pun terjadi. Entah mengapa, pada saat itu tubuhku merasa panas. Tanpa basa - basi, kulepaslah jaketku, dan aku hanya tidur dengan kaos saja. Setelah itu petaka terjadi.
+<br>
+<br>
+"HUKKK", pekikku yang tiba-tiba merasa mual. Ternyata tubuh ini membohongiku rupanya, jika tidak, mengapa aku bisa mual disaat aku tak merasa kedinginan ?. Segera kukenakan jaketku, tanpa mempedulikan keadaan bahwa tubuhku tidak kedinginan. Perlahan, badanku mulai terasa lemas, dan kesadaranku semakin hilang.
+<br>
+<br>
+"Sial, apakah ini akhirnya ?"
+<br>
+".........." Akupun tak mengingat apa - apa lagi setelah itu. Hingga ku dikejutkan dengan sinar terang yang menembus mataku.
+<br>
+<br>
+"Dimanakah aku, apakah ini surga ?" Pikirku saat itu.
+<br>
+<br>
+Saat kubuka mataku, aku merasa lega karena cahaya yang kulihat memang karena hari yang sudah pagi, dan aku masih tergeletak di posisi yang sama seperti tadi. Dan akupun merasa lega karena aku masih diberi kesempatan hidup, dan tak jadi menyusul sanak kerabatku dan teman-teman yang sudah pindah alam terlebih dahulu. Kumasaklah sarapan pagi, sambil menikmati mentari pagi.
+<br>
+<br>
+"Aah.. indahnya, namun masih ada yang harus ku lakukan"
+<br>
+<br>
+Selepas itu, ku kembali melanjutkan langkah. Dengan sisa - sisa energi yang terkuras karena kedinginan semalam, kulangkahkan kakiku setapak demi setapak, kugunakan pula tanganku untuk merayap saat kaki ku sudah terasa sampai di ujung kekuatannya. Setelah 30 menit, akhirnya ku sampai pada puncaknya. "Oh, nikmatnya" ujarku sambil tiduran di tanah. Cuaca saat itu benar-benar cerah, dan aku bisa melihat sekeliling dengan sangat jelas. Saat aku melihat ke timur, kulihat masih ada beberapa bukit terlihat jauh di depan entah dimana itu. Puas menikmati, aku pun segera turun. Saat kutengok ke arah barat, kulihat ada sebuah rumah, tanpa basa - basi aku segera menuju kesana karena penasaran. Sesampainya disitu aku pun takjub.
+<br>
+<br>
+"OMG, bahkan di tempat seperti ini pun masih ada saja." gumam ku yang takjub karena melihat ada warteg di tempat yang jauh dari pemukiman manusia.
+<br>
+Di halamannya, tertulis "Warung mbom yem puncak Lawu". Saat ku masuk terdalam, makanan yang dijual lumayan banyak, tak kalah dengan warteg yang ada dibawah sana. Kupesanlah 1 botol minuman, dan dengan segera aku duduk di kursi yang ada di halaman, lalu menikmati hamparan awan dan langit biru yang ada di depan mata. Ah, nikmatnya saat itu.
+<br>
+<br>
+Puas menikmati, aku segera beranjak turun. Tak lupa ku berfoto sejenak pada pos 4 kemarin dengan pemandangannya yang menakjubkan, yahh walau kamera ku dulu jelek sih.
+<br>
+<br>
+<img src="https://i.ibb.co/WGkc5hd/2021-01-20-143218-599x566-scrot.webp">
+<p style="text-align:center;">Nyempil di foto orang, hehehe</p>
+<br>
+<br>
+Untuk perjalanan turun, memang tidak seberat ketika naik, namun dapat menyebabkan kaki menjadi sakit karena medannya yang berupa tangga berundak sepanjang jalan. Setelah sampai ke basecamp, benar saja kakiku terasa berat sekali. Akhirnya ku beristirahat dulu, sambil merenung sejenak, ada beberapa hal yang bisa kusimpulkan dari rasa penasaranku. 
+<br>
+<br>
+Pertama adalah diatas awan, kita dapat melihat langit biru yang begitu luas, sesuatu pemandangan yang tak pernah kutemui sebelumnya. 
+<br>
+<br>
+Kedua, walau di ketinggian memiliki pemandangan yang indah, namun hawa dinginnya juga menusuk tulang, jauhhhh banget bedanya dari hawa di rumah, dinginnya brrrrrrr
+<br>
+<br>
+Ketiga, mungkin saja hal-hal yang tak terduga akan kita jumpai disepanjang perjalanan, contohnya yaitu tongkat sun go kong KW yang mengantarkanku sampai pos 5, warung rasa penginapan di pos 5, bahkan tepat dibawah sebelah barat puncak lawu terdapat juga warung makan milik Mbok Yem, dengan pemandangan hamparan langit indahnya didepan kaki.
+<br>
+<br>
+</div>
+  </div>
+</body>

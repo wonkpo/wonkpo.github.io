@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=100%, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  width: 100%;
+  background-image: url(https://i.ibb.co/2S20TFG/nexus2cee-lollipop-wallpaper-01.webp);
+  background-size: cover;
+  scroll-padding-top: var(--top-spacing);
+  margin: var(--top-spacing) auto;
+  padding: 0px;
+  font-family: Roboto, sans-serif;
+}
+
+.header {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #f4f4f4;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .outer-box {
+	height: 100%;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+  
+a {
+  color: #000;
+}
+
+h2 {
+  color: #FFF;
+}
+
+.button {
+  background-color: #FFF;
+  border: none;
+  border-radius: 3vw;
+  color: black;
+  width: 80vw;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  float: center;
+  font-size: 2vw;
+  margin-top: 8vw;
+  margin-left: 8vw;
+  margin-right: 10vw;
+  cursor: pointer;
+}
+ 
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+	var muncul = false;
+	var imageURL = "box2-1.webp";
+  $(window).scroll(function() {
+    if ($(document).scrollTop() > 1700) 
+    
+    {  if (!muncul){
+            muncul=true;
+    $("#flip").css("background-image", "url(" + imageURL + ")"); 
+    $("#flip").css("background-size", "36%");
+    $("#flip").css("background-repeat", "no-repeat");
+    $("#flip").css("height", "30vh");
+    $("#flip").css("margin-left", "10vw");
+    $("#flip").css("opacity", "1");
+    $("#flip").css("display", "inline");
+	$("#flip").animate({width: "35vw"}, "slow");
+  }
+   
+  }else 
+  { if (muncul){
+            muncul=false;
+    $("#flip").css("background-image", "url(" + imageURL + ")"); 
+    $("#flip").css("background-size", "50%");
+    $("#flip").css("background-repeat", "no-repeat");
+    $("#flip").css("height", "20vh");
+    $("#flip").css("margin-left", "0vw");
+    $("#flip").css("opacity", "0");
+    $("#flip").animate({width: "-35vw"}, "slow"); 
+  }
+}
+});
+});
+</script>
+</head>
+<body>
+<header class="header">
+  <a href="" class="logo">Wonkpo</a>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About author</a></li>
+    <li><a href="daftar-isi.html">Post</a></li>
+  </ul>
+</header>
+  <h2>Muflih Fathio Adlian</h2>
+<div class="button">
+<a href="post/2021/January/">Januari</a>
+</div>
