@@ -1,5 +1,5 @@
 #!/bin/bash
 
 git add --all
-git commit -m "avif image test"
+git commit -m "pesan"
 git push -u origin master
